@@ -51,9 +51,10 @@ Requires(pre):  libwicked@LIBWICKED_PACKAGE_SUFFIX@ = %{version}
 
 %bcond_with     wicked_devel
 
-# Note: nanny use is enabled by default
-%bcond_without  use_nanny
-%bcond_without  use_teamd
+# Note: nanny use is enabled by default, except on SLE-12
+%bcond_with     use_nanny
+# teamd is supported since SLE-12-SP1
+%bcond_with     use_teamd
 
 BuildRequires:  libnl3-devel
 %if 0%{?suse_version} > 1110
